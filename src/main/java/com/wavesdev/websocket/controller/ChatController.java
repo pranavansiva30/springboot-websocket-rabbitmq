@@ -31,9 +31,7 @@ public class ChatController {
 
     @MessageMapping("/chat.send")
     @SendToUser
-    public ChatMessage send(@Payload ChatMessage chatMessage,SimpMessageHeaderAccessor headerAccessor) throws Exception {
-        String username= headerAccessor.getSessionAttributes().get("username").toString();
-        System.out.println("user:"+username);
+    public ChatMessage send(@Payload ChatMessage chatMessage) throws Exception {
         this.template.convertAndSend("/topic/"+chatMessage.getReceiver(), chatMessage);
         return chatMessage;
     }
