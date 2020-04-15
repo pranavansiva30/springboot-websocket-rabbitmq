@@ -23,6 +23,7 @@ function connect() {
 
 function onConnected(frame){
     setConnected(true);
+    console.log(stompClient.clients);
     stompClient.subscribe('/user/queue/chat.send', onMessageReceived);
     stompClient.subscribe('/topic/'+ $("#username").val(), onMessageReceived);
     stompClient.subscribe('/topic/public', onMessageReceived);

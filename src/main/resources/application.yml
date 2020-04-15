@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: chat-application
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8080
+
+
+security:
+  oauth2:
+    client:
+      client-id: mobileClientId
+      client-secret: secret
+      access-token-uri: http://localhost:8080/authserver/oauth/token
+      grant-type: client_credentials
+      scope: mobile,read,write
+    resource:
+      user-info-uri: http://localhost:8080/authserver/auth/user/me
